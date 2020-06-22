@@ -1,2 +1,2 @@
 # Interview-Practice
-Practice problems for prepping for interviews
+Practice problems to prep for interviews
