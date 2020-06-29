@@ -17,21 +17,24 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-  let zerosCounter = 0;
+  let lastNonZeroPos = 0;
   for (let i = 0; i < nums.length; i += 1) {
-    if (nums[i] === 0) {
-      nums.splice(i, 1);
-      zerosCounter += 1;
-      i -= 1;
+    if (nums[i] !== 0) {
+      if (lastNonZeroPos !== i) {
+        nums[lastNonZeroPos] = nums[i];
+        lastNonZeroPos += 1;
+      } else {
+        lastNonZeroPos += 1;
+      }
     }
   }
-  for (let i = 0; i < zerosCounter; i += 1) {
-    nums.push(0);
+
+  for (let i = lastNonZeroPos; i < nums.length; i += 1) {
+    nums[i] = 0;
   }
-  return nums;
 };
 
 // Tests
 
-// console.log(moveZeroes([0,1,0,3,12]));
-// console.log(moveZeroes([0, 0, 1]));
+console.log(moveZeroes([0,1,0,3,12]));
+console.log(moveZeroes([0, 0, 1]));
